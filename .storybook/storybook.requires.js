@@ -21,9 +21,9 @@ global.STORIES = [
 import '@storybook/addon-ondevice-controls/register';
 import '@storybook/addon-ondevice-actions/register';
 
-import { argsEnhancers } from '@storybook/addon-actions/dist/modern/preset/addArgs';
+import {argsEnhancers} from '@storybook/addon-actions/dist/modern/preset/addArgs';
 
-import { decorators, parameters } from './preview';
+import {decorators, parameters} from './preview';
 
 if (decorators) {
   if (__DEV__) {
@@ -34,7 +34,7 @@ if (decorators) {
   }
   // workaround for global decorators getting infinitely applied on HMR, see https://github.com/storybookjs/react-native/issues/185
   clearDecorators();
-  decorators.forEach((decorator) => addDecorator(decorator));
+  decorators.forEach(decorator => addDecorator(decorator));
 }
 
 if (parameters) {
@@ -42,12 +42,13 @@ if (parameters) {
 }
 
 try {
-  argsEnhancers.forEach((enhancer) => addArgsEnhancer(enhancer));
+  argsEnhancers.forEach(enhancer => addArgsEnhancer(enhancer));
 } catch {}
 
 const getStories = () => {
   return {
     './.storybook/stories/Button/Button.stories.js': require('./stories/Button/Button.stories.js'),
+    '../src/components/*.stories.js': require('../src/components/Compo.stories.js'),
   };
 };
 
